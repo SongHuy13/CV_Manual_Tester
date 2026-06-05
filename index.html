@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NGO SONG HUY — QC Engineer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #d8dce6;
+      padding: 24px 16px 48px;
+      font-size: 13px;
+      color: #1e2433;
+      line-height: 1.6;
+    }
+
+    /* ── PAGE SHELL ── */
+    .cv {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .18);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    /* ── NOTICE ── */
+    .notice {
+      background: #fef9ec;
+      border-left: 4px solid #f59e0b;
+      padding: 8px 20px;
+      font-size: 11.5px;
+      color: #78450c;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .notice span {
+      font-weight: 600;
+    }
+
+    /* ══════════════════════════════════════
+   HEADER — matches PDF dark header
+══════════════════════════════════════ */
+    .cv-header {
+      background: #3a3f4b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 32px 24px 32px;
+      gap: 24px;
+    }
+
+    .hd-left h1 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+    }
+
+    .hd-left .role {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: #b0b8cc;
+      margin-top: 5px;
+      letter-spacing: 0.3px;
+    }
+
+    .hd-photo {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: #5a6075;
+      border: 3px solid #6b7590;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #b0b8cc;
+      font-weight: 600;
+    }
+
+    /* ══════════════════════════════════════
+   TWO-COLUMN BODY
+══════════════════════════════════════ */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 900px;
+    }
+
+    /* ══════════════════════════════════════
+   LEFT SIDEBAR — matches PDF left col
+══════════════════════════════════════ */
+    .sidebar {
+      background: #f5f6f9;
+      border-right: 1px solid #e2e5ed;
+      padding: 24px 18px 32px;
+    }
+
+    /* Contact block */
+    .contact-block {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #dde0ea;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: #3a4055;
+      margin-bottom: 7px;
+      line-height: 1.45;
+    }
+
+    .contact-item .ico {
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: #5d6b8a;
+    }
+
+    .contact-item a {
+      color: #2d5be3;
+      text-decoration: none;
+    }
+
+    /* Sidebar section header */
+    .sb-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: #fff;
+      background: #3a3f4b;
+      padding: 5px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .sb-section {
+      margin-bottom: 22px;
+    }
+
+    /* Education */
+    .edu-school {
+      font-weight: 600;
+      font-size: 12.5px;
+      color: #1e2433;
+    }
+
+    .edu-years {
+      font-size: 11px;
+      color: #2d5be3;
+      font-family: 'JetBrains Mono', monospace;
+      margin: 2px 0 3px;
+    }
+
+    .edu-degree {
+      font-size: 12px;
+      color: #4a5168;
+      margin-bottom: 8px;
+    }
+
+    .edu-project-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #7a869a;
+      margin-bottom: 4px;
+    }
+
+    .edu-project-text {
+      font-size: 11.5px;
+      color: #4a5168;
+      line-height: 1.5;
+    }
+
+    /* Skill groups */
+    .skill-group {
+      margin-bottom: 13px;
+    }
+
+    .skill-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #7a869a;
+      margin-bottom: 5px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag {
+      font-size: 10.5px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .tag-blue {
+      background: #deeafd;
+      color: #1d45a8;
+    }
+
+    .tag-teal {
+      background: #d4f1ed;
+      color: #0a7a6e;
+    }
+
+    .tag-gray {
+      background: #e6e9f0;
+      color: #3d4a60;
+    }
+
+    .tag-dark {
+      background: #3a3f4b;
+      color: #a8b4cc;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Certs */
+    .cert-row {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 7px;
+      font-size: 11.5px;
+    }
+
+    .cert-yr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #2d5be3;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    .cert-name {
+      color: #3a4055;
+    }
+
+    .cert-note {
+      font-size: 11px;
+      color: #9aa3b5;
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ══════════════════════════════════════
+   MAIN CONTENT — right column
+══════════════════════════════════════ */
+    .main {
+      padding: 24px 28px 32px;
+    }
+
+    /* Section header */
+    .sec-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #3a3f4b;
+      border-bottom: 2px solid #3a3f4b;
+      padding-bottom: 5px;
+      margin-bottom: 14px;
+    }
+
+    /* Summary */
+    .summary {
+      font-size: 12.5px;
+      color: #3a4055;
+      line-height: 1.7;
+      margin-bottom: 22px;
+      padding: 14px 16px;
+      background: #f5f6f9;
+      border-left: 3px solid #3a3f4b;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .summary strong {
+      color: #1e2433;
+      font-weight: 600;
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    /* Job entry */
+    .job {
+      margin-bottom: 20px;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 1px;
+    }
+
+    .job-company {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e2433;
+    }
+
+    .job-period {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #7a869a;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .job-role {
+      font-size: 12px;
+      font-weight: 500;
+      color: #2d5be3;
+      margin-bottom: 10px;
+    }
+
+    /* Bullet list — FIXED layout */
+    .blist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+
+    .blist li {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 6px;
+      font-size: 12px;
+      line-height: 1.6;
+      align-items: flex-start;
+    }
+
+    .blist li .bull {
+      color: #2d5be3;
+      font-size: 9px;
+      flex-shrink: 0;
+      margin-top: 5px;
+      line-height: 1;
+    }
+
+    .blist li .txt {
+      flex: 1;
+      color: #2e3547;
+    }
+
+    .blist li .txt strong {
+      color: #1e2433;
+      font-weight: 600;
+    }
+
+    .fill {
+      color: #c0580f;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      background: #fff3e8;
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+
+    /* Tech stack row */
+    .stack-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #9aa3b5;
+      margin-bottom: 5px;
+      margin-top: 4px;
+    }
+
+    /* Key contributions sub-header */
+    .contrib-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #3a3f4b;
+      background: #eef0f5;
+      padding: 3px 8px;
+      border-radius: 2px;
+      margin: 10px 0 7px;
+      display: inline-block;
+    }
+
+    /* Divider between jobs */
+    .job-divider {
+      border: none;
+      border-top: 1px dashed #dde0ea;
+      margin: 16px 0;
+    }
+
+    /* Projects table */
+    .proj-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+
+    .proj-table th {
+      background: #f5f6f9;
+      text-align: left;
+      padding: 7px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #7a869a;
+      border-bottom: 2px solid #dde0ea;
+      border-top: 1px solid #dde0ea;
+    }
+
+    .proj-table td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #eef0f5;
+      vertical-align: top;
+      color: #2e3547;
+      line-height: 1.55;
+    }
+
+    .proj-table tr:hover td {
+      background: #fafbfd;
+    }
+
+    .proj-name {
+      font-weight: 700;
+      color: #1e2433;
+      font-size: 12px;
+    }
+
+    .proj-co {
+      color: #9aa3b5;
+      font-size: 10.5px;
+      margin-top: 1px;
+    }
+
+    .proj-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: #7a869a;
+    }
+
+    /* Print */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .cv {
+        box-shadow: none;
+      }
+
+      .notice {
+        display: none;
+      }
+
+      .cv-body {
+        grid-template-columns: 230px 1fr;
+      }
+    }
+
+    .hd-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #6b7590;
+      flex-shrink: 0;
+    }
+
+    .hd-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="cv">
+
+    <!-- ══ HEADER ══ -->
+    <header class="cv-header">
+      <div class="hd-left">
+        <h1>NGO SONG HUY</h1>
+        <div class="role">Manual QC Engineer &nbsp;·&nbsp; 3+ Years Experience</div>
+      </div>
+      <div class="hd-photo">
+        <img src="https://i.ibb.co/d4PxQ2CZ/Gemini-Generated-Image-8ftmdy8ftmdy8ftm.jpg" alt="Ngo Song Huy">
+      </div>
+    </header>
+
+    <!-- ══ BODY ══ -->
+    <div class="cv-body">
+
+      <!-- ════ SIDEBAR ════ -->
+      <aside class="sidebar">
+
+        <!-- Contact -->
+        <div class="contact-block">
+          <div class="contact-item">
+            <span class="ico"><i class="fas fa-cake-candles"></i></span>
+            <span>13/01/2001</span>
+          </div>
+          <div class="contact-item">
+            <span class="ico"><i class="fas fa-phone"></i></span>
+            <span>0915 522 473</span>
+          </div>
+          <div class="contact-item">
+            <span class="ico"><i class="fas fa-envelope"></i></span>
+            <a href="mailto:it.ngohuy1301@gmail.com">it.ngohuy1301@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="ico"><i class="fas fa-location-dot"></i></span>
+            <span>Ho Chi Minh City, Vietnam</span>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="sb-section">
+          <span class="sb-title">Education</span>
+          <div class="edu-school">Nha Trang University</div>
+          <div class="edu-years">2019 – 2022</div>
+          <div class="edu-degree">Bachelor of Information Technology</div>
+          <div class="edu-project-label">Graduation Project</div>
+          <div class="edu-project-text">
+            Research &amp; Deployment of OpenVPN + Snort on pfSense — designed secure network, integrated IDS/IPS,
+            configured firewall &amp; VPN, analyzed system logs &amp; traffic.
+          </div>
+        </div>
+
+        <!-- Core Skills -->
+        <div class="sb-section">
+          <span class="sb-title">Core Skills</span>
+
+          <div class="skill-group">
+            <div class="skill-label">Testing Types</div>
+            <div class="tags">
+              <span class="tag tag-blue">Functional Testing</span>
+              <span class="tag tag-blue">Regression Testing</span>
+              <span class="tag tag-blue">End-to-End (E2E)</span>
+              <span class="tag tag-blue">UI Testing</span>
+              <span class="tag tag-blue">Smoke &amp; Sanity</span>
+              <span class="tag tag-blue">Cross-browser</span>
+              <span class="tag tag-blue">Security Testing</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Test Design &amp; Strategy</div>
+            <div class="tags">
+              <span class="tag tag-blue">Test Case Design</span>
+              <span class="tag tag-blue">BVA</span>
+              <span class="tag tag-blue">Negative Testing</span>
+              <span class="tag tag-blue">Risk-based Testing</span>
+              <span class="tag tag-blue">Regression Checklist</span>
+              <span class="tag tag-blue">Defect Lifecycle Mgmt</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Technical</div>
+            <div class="tags">
+              <span class="tag tag-teal">API Testing (REST)</span>
+              <span class="tag tag-teal">SQL / DB Validation</span>
+              <span class="tag tag-teal">Performance Testing</span>
+              <span class="tag tag-teal">RBAC Testing</span>
+              <span class="tag tag-teal">Chrome DevTools</span>
+              <span class="tag tag-teal">Log Analysis</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Tools</div>
+            <div class="tags">
+              <span class="tag tag-gray">Postman</span>
+              <span class="tag tag-gray">JMeter</span>
+              <span class="tag tag-gray">Jira</span>
+              <span class="tag tag-gray">Azure DevOps</span>
+              <span class="tag tag-gray">DBeaver</span>
+              <span class="tag tag-gray">pgAdmin</span>
+              <span class="tag tag-gray">SQL Server</span>
+              <span class="tag tag-gray">PostgreSQL</span>
+              <span class="tag tag-gray">Figma</span>
+              <span class="tag tag-gray">Git / GitHub</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Methodologies</div>
+            <div class="tags">
+              <span class="tag tag-gray">Agile / Scrum</span>
+              <span class="tag tag-gray">Waterfall</span>
+              <span class="tag tag-gray">SDLC</span>
+              <span class="tag tag-gray">STLC</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">AI-Assisted Testing</div>
+            <div class="tags">
+              <span class="tag tag-teal">ChatGPT</span>
+              <span class="tag tag-teal">Gemini</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="sb-section">
+          <span class="sb-title">Certifications</span>
+          <div class="cert-row">
+            <span class="cert-yr">2022</span>
+            <span class="cert-name">Ubuntu with WSL</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-yr">2022</span>
+            <span class="cert-name">Java Programming Foundation – ZendVN</span>
+          </div>
+          <div class="cert-row">
+            <span class="cert-yr">2023</span>
+            <span class="cert-name">Testing for Freshers – CodeStar</span>
+          </div>
+        </div>
+
+
+
+      </aside>
+
+      <!-- ════ MAIN ════ -->
+      <main class="main">
+
+        <!-- Professional Summary -->
+        <div class="section">
+          <div class="sec-title">Professional Summary</div>
+          <div class="summary">
+            Results-driven Manual QC Engineer with <strong>3+ years of experience</strong> testing web and mobile
+            applications, specializing in <strong>LMS and Social Commerce platforms</strong>. Proven expertise in
+            <strong>End-to-End Testing, REST API Validation, Database Verification</strong>, and <strong>RBAC / Security
+              Testing</strong>. Unique competitive advantage from prior Backend Developer background (C# .NET), enabling
+            deep root cause analysis and server-side log investigation beyond the scope of typical QC roles.
+            Looking to grow toward <strong>Automation QC / QC Lead</strong> in the future.
+          </div>
+        </div>
+
+        <!-- ══ PROFESSIONAL EXPERIENCE ══ -->
+        <div class="section">
+          <div class="sec-title">Professional Experience</div>
+
+          <!-- OnAir JSC -->
+          <div class="job">
+            <div class="job-header">
+              <span class="job-company">OnAir JSC</span>
+              <span class="job-period">08/2024 – Present</span>
+            </div>
+            <div class="job-role">QC Engineer (Manual) &nbsp;·&nbsp; Sole QC</div>
+
+            <ul class="blist">
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Owned</strong> full product quality across <span class="fill">5</span> core
+                  modules as sole QC Engineer, identifying <strong>84+ High/Highest-severity defects</strong> across
+                  <strong>490+ total bugs</strong> reported to Jira with an <span class="fill">79</span>% resolution
+                  rate, by establishing end-to-end test coverage from BRD/SRS analysis through post-release
+                  validation.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Engineered</strong> a comprehensive test suite of <strong>8,500+ test
+                    cases</strong> across UI, functional, validation &amp; regression scenarios, covering <span
+                    class="fill">150+</span> feature modules, with <strong>490+ defects</strong> identified and tracked
+                  via Jira, achieving an <span class="fill">79</span>% defect resolution rate across all
+                  releases.</span>
+              </li>
+            </ul>
+
+            <span class="contrib-label">Key Contributions</span>
+
+            <ul class="blist">
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Identified</strong> <span class="fill">20+</span> high-severity defects in
+                  <strong>Payment, Subscription &amp; Voucher flows</strong> — including incorrect revenue calculation,
+                  voucher applied without successful payment, and broken subscription updates — by applying BVA &amp;
+                  negative testing on financial workflows, preventing direct monetary impact on platform revenue and end
+                  users.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Uncovered</strong> <strong>cross-host data exposure vulnerability</strong> and
+                  <span class="fill">20+</span> access-control defects across multi-tenant organizations, by designing a
+                  systematic test matrix (User / Role / Host / Org boundary) via Postman API testing &amp; PostgreSQL
+                  (Supabase) DB validation, eliminating cross-organization data leakage risk pre-production.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Ensured</strong> cross-platform UI quality across <strong>web and mobile app
+                    (Android/iOS)</strong>, identifying <strong>50+ high-severity UI defects</strong> — including broken
+                  responsive layouts on mobile web, Google login failures on Android, and critical rendering
+                  inconsistencies — by executing structured test coverage across browsers, mobile web, and native app
+                  environments, preventing major UX regressions from reaching production.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Validated</strong> data integrity across <span class="fill">6</span>
+                  integrated microservices at <span class="fill">95</span>% accuracy post-release, by executing
+                  structured <strong>REST API test suites</strong> in Postman and writing SQL validation queries against
+                  PostgreSQL (Supabase) to reconcile frontend, API, and DB states.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Designed</strong> and executed <strong>JMeter performance scenarios</strong>
+                  simulating <span class="fill">500</span> concurrent users on payment flows, identifying <span
+                    class="fill">4</span> critical bottlenecks and enabling Dev team to improve system throughput by
+                  <span class="fill">35</span>% before release.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Established</strong> a risk-based <strong>regression checklist</strong>
+                  covering <span class="fill">8</span> critical modules, reducing defect escape rate to below <span
+                    class="fill">2</span>% and cutting regression execution time by <span class="fill">6</span> hours
+                  per sprint cycle.</span>
+              </li>
+            </ul>
+
+            <div class="stack-label">Tech Stack</div>
+            <div class="tags">
+              <span class="tag tag-gray">Jira</span>
+              <span class="tag tag-gray">Postman</span>
+              <span class="tag tag-gray">JMeter</span>
+              <span class="tag tag-gray">PostgreSQL (Supabase)</span>
+              <span class="tag tag-gray">DBeaver</span>
+              <span class="tag tag-gray">Figma</span>
+            </div>
+          </div>
+
+          <hr class="job-divider" />
+
+          <!-- RYO Vietnam -->
+          <div class="job">
+            <div class="job-header">
+              <span class="job-company">RYO Vietnam Co., Ltd</span>
+              <span class="job-period">03/2023 – 07/2024</span>
+            </div>
+            <div class="job-role">QC Engineer &nbsp;·&nbsp; E-commerce Platform</div>
+
+            <ul class="blist">
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Executed</strong> functional, UI, and <strong>regression testing</strong>
+                  across <span class="fill">24+</span> production releases for a multi-platform E-commerce system
+                  (Mobile App &amp; CMS), maintaining a <span class="fill">90</span>% pass rate on critical Order and
+                  Payment processing workflows.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Detected</strong> <span class="fill">12+</span> high-severity defects
+                  affecting <strong>payment accuracy and order processing integrity</strong> via systematic negative
+                  testing &amp; BVA on checkout and payment gateway flows.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Verified</strong> end-to-end <strong>data integrity</strong> for Order and
+                  Payment modules by executing <strong>REST API test cases</strong> in Postman and writing SQL
+                  validation queries against SQL Server, ensuring zero data mismatch between frontend, API responses,
+                  and DB records across <span class="fill">15+</span> releases.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Conducted</strong> <strong>JMeter performance testing</strong> on high-traffic
+                  checkout flows, identifying <span class="fill">3</span> bottlenecks and providing load test reports
+                  that improved system response time by <span class="fill">25</span>% under peak conditions.</span>
+              </li>
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Managed</strong> full <strong>defect lifecycle</strong> across <span
+                    class="fill">30+</span> sprints via Azure DevOps — logging, prioritizing by business impact,
+                  tracking and verifying fixes — achieving average resolution turnaround of <span
+                    class="fill">1.5</span> days and <span class="fill">90</span>% fix-verification within same release
+                  cycle.</span>
+              </li>
+            </ul>
+
+            <div class="stack-label">Tech Stack</div>
+            <div class="tags">
+              <span class="tag tag-gray">Azure DevOps</span>
+              <span class="tag tag-gray">Postman</span>
+              <span class="tag tag-gray">JMeter</span>
+              <span class="tag tag-gray">SQL Server</span>
+              <span class="tag tag-gray">Figma</span>
+            </div>
+          </div>
+
+          <hr class="job-divider" />
+
+          <!-- VNPT -->
+          <div class="job">
+            <div class="job-header">
+              <span class="job-company">VNPT – Vietnam Posts &amp; Telecommunications Group</span>
+              <span class="job-period">12/2021 – 01/2022</span>
+            </div>
+            <div class="job-role">IT Support Intern</div>
+            <ul class="blist">
+              <li>
+                <span class="bull">▸</span>
+                <span class="txt"><strong>Supported</strong> internal users and resolved network-related issues, gaining
+                  hands-on experience with enterprise IT infrastructure and helpdesk workflows.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div><!-- end experience section -->
+
+        <!-- ══ PROJECTS ══ -->
+        <div class="section">
+          <div class="sec-title">Projects</div>
+          <table class="proj-table">
+            <thead>
+              <tr>
+                <th style="width:26%">Project</th>
+                <th style="width:20%">Domain</th>
+                <th style="width:16%">Period</th>
+                <th>Key Achievements</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="proj-name">OnAir LMS</div>
+                  <div class="proj-co">OnAir JSC</div>
+                </td>
+                <td>EdTech / LMS</td>
+                <td><span class="proj-period">08/2024–Now</span></td>
+                <td>Identified critical defects in scoring engine &amp; learning progress calculation; prevented
+                  incorrect learning outcomes from reaching production. <em>Tech: Jira, Postman, PostgreSQL (Supabase),
+                    Figma.</em></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="proj-name">OnAir Platform</div>
+                  <div class="proj-co">OnAir JSC</div>
+                </td>
+                <td>Social Commerce / IAM</td>
+                <td><span class="proj-period">08/2024–Now</span></td>
+                <td>Exposed cross-organization permission &amp; data access vulnerabilities; validated correct RBAC
+                  behavior across multi-tenant environment. <em>Tech: Jira, Postman, DBeaver, Figma.</em></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="proj-name">RYO E-commerce</div>
+                  <div class="proj-co">RYO Vietnam Co., Ltd</div>
+                </td>
+                <td>E-commerce</td>
+                <td><span class="proj-period">03/2023–07/2024</span></td>
+                <td>Caught payment-critical defects pre-release; improved system stability through regression &amp;
+                  usability testing. <em>Tech: Azure DevOps, Postman, JMeter, SQL Server.</em></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="proj-name">Hospital CMS</div>
+                  <div class="proj-co">RHM – UMP HCM</div>
+                </td>
+                <td>Healthcare</td>
+                <td><span class="proj-period">10/2022–03/2023</span></td>
+                <td>Developed backend APIs (C# .NET); built strong foundation in system architecture &amp; root cause
+                  analysis applied in current QC role. <em>Tech: C#, .NET, SQL Server.</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </main>
+    </div><!-- end cv-body -->
+  </div><!-- end cv -->
+
+</body>
+
+</html>
